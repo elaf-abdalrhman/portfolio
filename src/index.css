@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  Theme tokens (Tailwind v4 CSS-first config)                        */
+/*  Palette: near-black + electric cyan + violet                       */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-ink: #0a0a0f; /* near-black background */
+  --color-ink-2: #0e0e16; /* slightly raised surface */
+  --color-surface: #14141f; /* cards / panels */
+  --color-line: #23233a; /* hairline borders */
+
+  --color-fg: #e7e9ee; /* primary text */
+  --color-muted: #a2a6b4; /* secondary text */
+  --color-faint: #6b7080; /* tertiary text */
+
+  --color-cyan: #22d3ee; /* primary accent */
+  --color-violet: #8b5cf6; /* secondary accent */
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem; /* offset for sticky nav on anchor jumps */
+  background-color: var(--color-ink); /* fallback behind the galaxy canvas */
+}
+
+body {
+  background-color: transparent; /* let the fixed <Galaxy> canvas show through */
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-cyan) 35%, transparent);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-violet) 40%, var(--color-line));
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyan);
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable utility classes                                           */
+/* ------------------------------------------------------------------ */
+@layer components {
+  /* Cyan→violet gradient text */
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-cyan),
+      var(--color-violet)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Soft neon glow behind accent elements */
+  .glow-cyan {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-cyan) 40%, transparent),
+      0 0 24px -4px color-mix(in srgb, var(--color-cyan) 55%, transparent);
+  }
+  .glow-violet {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-violet) 40%, transparent),
+      0 0 28px -4px color-mix(in srgb, var(--color-violet) 55%, transparent);
+  }
+
+  /* Frosted card surface */
+  .card {
+    background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    border: 1px solid var(--color-line);
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Hero grid: slow vertical drift of a faint perspective grid */
+@keyframes grid-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -56px; /* one cell */
+  }
+}
+
+/* Blinking caret for the typed/scrambled tagline */
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion: kill smooth scroll + any CSS transitions/anims     */
+/*  (Framer Motion is gated separately in JS via useReducedMotion)     */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
