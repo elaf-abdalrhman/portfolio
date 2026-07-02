@@ -153,7 +153,7 @@ export const education = [
 ]
 
 export const socials = {
-  linkedin: 'https://www.linkedin.com/in/elaf-abdalrehman',
+  linkedin: 'https://www.linkedin.com/in/elaf-abdalrhman',
   github: 'https://github.com/elaf-abdalrhman',
 }
 
