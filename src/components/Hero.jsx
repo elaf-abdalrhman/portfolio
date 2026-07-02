@@ -4,6 +4,7 @@ import { profile } from '../data/content'
 import AnimatedBackground from './AnimatedBackground'
 import ScrambleText from './ui/ScrambleText'
 import MagneticButton from './ui/MagneticButton'
+import ProfilePhoto from './ui/ProfilePhoto'
 
 export default function Hero() {
   const reduce = useReducedMotion()
@@ -33,11 +34,12 @@ export default function Hero() {
       <AnimatedBackground />
 
       <motion.div
-        className="mx-auto w-full max-w-6xl"
+        className="mx-auto flex w-full max-w-6xl flex-col-reverse items-start gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16"
         variants={container}
         initial="hidden"
         animate="show"
       >
+      <div>
         {/* Availability pill */}
         <motion.div variants={item}>
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-muted">
@@ -107,6 +109,12 @@ export default function Hero() {
             <Download size={16} />
             Download CV
           </MagneticButton>
+        </motion.div>
+      </div>
+
+        {/* Profile photo */}
+        <motion.div variants={item} className="lg:shrink-0">
+          <ProfilePhoto size="h-40 w-40 sm:h-52 sm:w-52 lg:h-80 lg:w-80" />
         </motion.div>
       </motion.div>
 

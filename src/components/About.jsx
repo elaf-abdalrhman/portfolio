@@ -2,7 +2,6 @@ import { Boxes, Languages, Server, ShieldCheck, Sparkles } from 'lucide-react'
 import { profile, aboutHighlights } from '../data/content'
 import Section from './ui/Section'
 import Reveal, { RevealGroup, RevealItem } from './ui/Reveal'
-import ProfilePhoto from './ui/ProfilePhoto'
 
 // Map content.js icon names -> imported components (keeps the bundle lean).
 const ICONS = { Boxes, Languages, Server, ShieldCheck }
@@ -11,18 +10,8 @@ export default function About() {
   return (
     <Section id="about" eyebrow="About" index="01" title="Who I am">
       <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        {/* Photo + summary */}
+        {/* Summary */}
         <Reveal>
-          <div className="mb-8 flex items-center gap-5">
-            <ProfilePhoto size="h-28 w-28 sm:h-32 sm:w-32" />
-            <div>
-              <p className="font-display text-lg font-semibold text-fg">
-                {profile.name}
-              </p>
-              <p className="mt-1 text-sm text-cyan">{profile.title}</p>
-              <p className="mt-1 text-xs text-muted">{profile.location}</p>
-            </div>
-          </div>
           <p className="text-xl leading-relaxed text-fg sm:text-2xl">
             {profile.summary}
           </p>
