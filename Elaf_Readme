@@ -1,0 +1,6 @@
+elaf to update your protofolio (I mean after claude update it , you commit the changes through this commands)
+
+cd C:\Users\hp\Desktop\protofolio
+git add -A
+git commit -m "Update content"
+git push
