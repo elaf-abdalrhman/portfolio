@@ -153,8 +153,8 @@ export const education = [
 ]
 
 export const socials = {
-  linkedin: 'www.linkedin.com/in/elaf-abdalrehman', // TODO: LinkedIn profile URL
-  github: 'https://github.com/elaf-abdalrhman', // TODO: GitHub profile URL
+  linkedin: 'https://www.linkedin.com/in/elaf-abdalrehman',
+  github: 'https://github.com/elaf-abdalrhman',
 }
 
 export const navLinks = [
