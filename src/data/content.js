@@ -13,10 +13,10 @@ export const profile = {
   phone: '+963 998 910 542',
   phoneHref: '+963998910542',
   location: 'Qamishli, Syria — open to remote / relocation',
-  // Drop your PDF in /public and update this path (e.g. '/Elaf_Abd-Alrhman_CV.pdf')
-  cvUrl: '/cv.pdf', // TODO: add your CV file to /public and point here
-  // Save your photo as public/profile.jpg (or change this path).
-  photo: '/profile.jpg',
+  // Files in /public — BASE_URL keeps them working on GitHub Pages (/portfolio/)
+  cvUrl: `${import.meta.env.BASE_URL}cv.pdf`,
+  // Save your photo as public/profile.jpg (or change this filename).
+  photo: `${import.meta.env.BASE_URL}profile.jpg`,
   summary:
     'AI Engineer who ships production RAG pipelines, conversational AI, and semantic search into real enterprise products. Specialist in Arabic NLP and scalable FastAPI microservice architectures.',
 }
